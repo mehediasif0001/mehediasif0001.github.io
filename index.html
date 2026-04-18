@@ -2,11 +2,32 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Index.html</title>
+    <title>Interactive Homepage</title>
+    <link rel="stylesheet" href="styles.css">
+    <script>
+        function showToast(message) {
+            const toast = document.createElement('div');
+            toast.className = 'toast';
+            toast.innerText = message;
+            document.body.appendChild(toast);
+            setTimeout(() => {
+                toast.remove();
+            }, 3000);
+        }
+
+        function copyToClipboard(text) {
+            navigator.clipboard.writeText(text).then(() => {
+                showToast("Copy successful!");
+            }).catch(() => {
+                showToast("Copy failed (browser blocked).").;
+            });
+        }
+    </script>
 </head>
 <body>
-    <p>This ia my first page.</p>
+    <h1>Welcome to My Interactive Homepage</h1>
+    <button onclick="copyToClipboard('Text to copy')">Copy Text</button>
+    <link rel="stylesheet" href="styles.css">
 </body>
 </html>
